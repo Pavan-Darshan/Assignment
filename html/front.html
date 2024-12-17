@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Product Management System</title>
+        <link rel="stylesheet" href="/css/front.css">
+        
+    </head>
+
+    <body>
+     <div class="all_main">
+        <div id="sideBar">
+            <p>Product Management</p><hr>
+            <button class="sideBar_close" onclick="closeSideBar()">Close &times;</button>
+            <div class="link_tag"> <a href="">DashBoard</a> </div>
+            <div class="link_tag"><a href="">Products</a> </div>
+        </div>
+
+        <div class="main">
+            <div class="menu">
+                <button id="menu_button" onclick="openSideBar()" style="border: 1px  solid black;">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </button>
+            </div>
+            <div>
+                <h1 style="margin-left:50px;">   DashBoard</h1>
+            </div>
+            <div class="main_contents">
+                <div class="active">
+                    <p>Active</p>
+                    <p class="active_count">0</p>
+                </div>
+                <div class="cancelled">
+                    <p>Cancelled</p>
+                    <p class="cancelled_count">0</p>
+                </div>
+                <div class="draft">
+                    <p>Draft</p>
+                    <p class="draft_count">0</p>
+                </div>
+                <div class="delivered">
+                    <p>Delivered</p>
+                    <p class="delivered_count">0</p>
+                </div>
+                <div class="shipped">
+                    <p>Shipped</p>
+                    <p class="shipped_count">0</p>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="/javascript/front.js"></script>  
+    </body>
+</html>
