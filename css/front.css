@@ -28,9 +28,13 @@
 
   #menu_button{
     border: none;
+    outline: none;
     border-radius: 10px;
+    
   }
-
+.menu{
+    
+}
 
 
 /* side bar*/
@@ -39,7 +43,8 @@
     width: 15%;
     height: 100%;
     display: none;
-    background-color: #eef4fb;
+    background-color: #222e3c;
+    color: white;
 }
 #sideBar p{
     
@@ -51,12 +56,16 @@
 .link_tag a{
     text-decoration: none;
     margin-left: 20px;
-    color: black;
+    color: white;
+    
+   
     
 }
 .link_tag{
     padding: 10px 0px 10px 0px;
     font-size: 16px;
+    
+  
 }
 .sideBar_close{
     width: 30%;
@@ -74,10 +83,11 @@
     display: block;
   
 }
-.all_main {
+#all_main {
    width: 100%;
    height: 100%;
     display:inline-flex;
+    position: relative;
     
     
 }
@@ -85,7 +95,256 @@
     background-color: red;
 }
 .link_tag:hover{
-    background-color:rgb(232, 219, 219);
+    background-color:rgb(146, 143, 143);
+    color: black;
+}
+.link_tag>a:hover{
+    color: black;
 }
 
+
+/* Product Page*/
+
+
+#main_Product{
+    width: 80%;
+    height: 100%;
+    display: block;
+    opacity: 1;
+    
+}
+
+#add_product{
+    width: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto;
   
+    
+}
+#head_name{
+
+}
+#add{
+    position: absolute;
+    right: 50px;
+    top: 20px;
+    width: 15%;
+    height: 50%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: black;
+    color: white;
+}
+
+/* serach */
+#search_all{
+    width: 100%;
+    height: 50px;
+    display: grid;
+    grid-template-columns: auto auto;
+    position: relative;
+
+}
+#search{
+    width: 100%;
+    height: 100%;
+}
+#search input{
+    width: 50%;
+    height: 60%;
+    background-color: rgb(237, 240, 242);
+    border-radius: 10px;
+    border: none;
+}
+#search_submit{
+    width: 10%;
+    height: 60%;
+    margin-left: -20px;
+    margin-top: 1px;
+    background-color: rgb(186, 185, 184);
+    border-radius: 10px;
+    border: none;
+}
+#all_button button{
+    position: absolute;
+    right: 50px;
+    top: 10px;
+    width: 15%;
+    height: 50%;
+    border-radius: 10px;
+    border: 1px solid black;
+    outline: none;
+}
+
+
+
+/*Table */
+.table_main th{
+    border-bottom: 1px solid whitesmoke;
+    box-shadow: 6px 6px 10px rgb(230, 229, 229);
+    border-collapse: collapse;
+    padding:5px;
+    height: 25px;
+}
+.table_main td{
+    height: 20px;
+    padding: 5px;
+    text-align: center;
+}
+.table_main{
+    width: 100%;
+    position: relative;
+    top: 5%;
+    
+}
+.table_main i{
+    color: blue;
+}
+.table_main tr:nth-child(even){
+    background-color: rgb(245, 242, 242);
+}
+
+#all_main{
+    
+    
+}
+
+
+/* form */
+#form_page{
+    
+    width: 40%;
+    height: 90%;
+    background-color: rgb(244, 244, 241);
+    padding-top: 10px;
+    margin: auto;
+    border-radius: 4%;
+    position: absolute;
+    right: -700px;
+    display: none;
+    transition: right 10s ease-in-out 10s;
+    
+}
+.div1{
+    position: relative;
+    width: 100%;
+    height: 10%;
+    margin-top: -15px;
+    border-bottom: 2px solid black;
+    
+    
+}
+.div1 p{
+    font-size: 24px;
+    margin-left: 20px;
+   padding-top: 20px;
+    
+}
+.div1 button{
+    float: right;
+    margin-top: -50px;
+    margin-right: 60px;
+    height: 40%;
+    width: 7%;
+    border: none;
+    box-shadow: 4px 4px 2px rgb(240, 224, 224);
+    cursor: pointer;
+    
+}
+.div2,.div2,.div3,.div4,.div5,.div6,.div7,.div8{
+    position: relative;
+    width: 100%-20px;
+    height: 10%;
+    margin: 10px;
+}
+.div2,.div4,.div6,.div7,.div8{
+    width: 100%-20px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.div2 input{
+    width: 90%;
+    height: 50%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    box-shadow: 7px 7px 2px rgb(240, 224, 224);
+}
+.div3 textarea {
+    width: 95%;
+    height: 60%;
+    overflow: hidden;
+    resize: none;
+    padding-left: 15px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    box-shadow: 7px 7px 2px rgb(240, 224, 224);
+}
+.div4 input{
+    width: 90%;
+    height: 50%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    box-shadow: 7px 7px 2px rgb(240, 224, 224);
+}
+.div5 input{
+    width: 95%;
+    height: 50%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    box-shadow: 7px 7px 2px rgb(240, 224, 224);
+}
+.div6 input{
+    width: 90%;
+    height: 50%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    box-shadow: 7px 7px 2px rgb(240, 224, 224);
+}
+.div7 input{
+    width: 90%;
+    height: 50%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    box-shadow: 7px 7px 2px rgb(240, 224, 224);
+}
+.div8 input{
+    width: 90%;
+    height: 50%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    box-shadow: 7px 7px 2px rgb(240, 224, 224);
+}
+.div8{
+    
+}
+.div9{
+    width: 100%;
+}
+.div9 input{
+    width: 25%;
+    height: 5%;
+   margin-left: 15%;
+    padding: 5px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+
