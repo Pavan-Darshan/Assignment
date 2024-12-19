@@ -152,7 +152,7 @@
     height: 100%;
 }
 #search input{
-    width: 50%;
+    width: 60%;
     height: 60%;
     background-color: rgb(237, 240, 242);
     border-radius: 10px;
@@ -160,9 +160,9 @@
 }
 #search_submit{
     width: 10%;
-    height: 60%;
-    margin-left: -20px;
-    margin-top: 1px;
+    height: 55%;
+    margin-left: -10.8%;
+    margin-top:1px;
     background-color: rgb(186, 185, 184);
     border-radius: 10px;
     border: none;
@@ -213,7 +213,7 @@
 
 
 /* form */
-#form_page{
+#form_page,#form_page_edit,#form_page_view{
     
     width: 40%;
     height: 90%;
@@ -224,7 +224,7 @@
     position: absolute;
     right: -700px;
     display: none;
-    transition: right 10s ease-in-out 10s;
+    opacity: 1;
     
 }
 .div1{

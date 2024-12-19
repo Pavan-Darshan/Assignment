@@ -28,7 +28,7 @@
             <div id="add_product" >
                 <div id="head_name"><h1 style="margin-left:50px;">Products</h1></div>
 
-                <div><button id="add" onclick="edit()"><i class="fa fa-add">&nbsp;&nbsp;&nbsp;</i>ADD PRODUCT</button></div>
+                <div><button id="add" onclick="addProduct()"><i class="fa fa-add">&nbsp;&nbsp;&nbsp;</i>ADD PRODUCT</button></div>
             </div>
 
             <div id="search_all">
@@ -40,139 +40,70 @@
             </div>
 
 
-            <table class="table_main">
-                <tr>
-                    <th>Id</th>
+            <table class="table_main" id="table_data">
+                <thead>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Title</th>
                     <th>Description</th>
                     <th>Price</th>
                     <th>Status</th>
-                    <th>Vendor Name</th>
-                    <th>Product type</th>
+                    <th>Vendoe Name</th>
+                    <th>Product Type</th>
                     <th>Address</th>
-                    <th>Action</th>
-                </tr>
-                <tr>
+                    <th>Actions</th>
+
+                </thead>
+                <tbody>
+                  <tr>
                     <td>1</td>
-                    <td>Product1</td>
+                    <td>Samsung s24</td>
                     <td>Mobile</td>
-                    <td>Great product</td>
-                    <td>500</td>
+                    <td>16gb 526gb</td>
+                    <td>45000</td>
                     <td>Active</td>
-                    <td>CCC</td>
+                    <td>Samsung</td>
                     <td>Electronic</td>
                     <td>Bengaluru</td>
                     <td>
-                        <button><i class="fa fa-edit"></i></button>
-                        <button><i class="fa fa-eye"></i></button>
-                        <button><i class="fa fa-trash"></i></button>
+                        <button onclick="onEdit(this)"><i class="fa fa-edit"></i></button>
+                        <button onclick="onView(this)"><i class="fa fa-eye"></i></button>
+                        <button onclick="onDelete(this)"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>Product1</td>
+                    <td>Moto edge 50pro</td>
                     <td>Mobile</td>
-                    <td>Great product</td>
-                    <td>500</td>
+                    <td>12gb 256gb</td>
+                    <td>36000</td>
                     <td>Active</td>
-                    <td>AAA</td>
+                    <td>Moto</td>
                     <td>Electronic</td>
-                    <td>Bengaluru</td>
+                    <td>Mysuru</td>
                     <td>
-                        <button onclick="edit()"><i class="fa fa-edit"></i></button>
-                        <button><i class="fa fa-eye"></i></button>
-                        <button><i class="fa fa-trash"></i></button>
+                        <button onclick="onEdit(this)"><i class="fa fa-edit"></i></button>
+                        <button onclick="onView(this)"><i class="fa fa-eye"></i></button>
+                        <button onclick="onDelete(this)"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Product1</td>
-                    <td>Mobile</td>
-                    <td>Great product</td>
-                    <td>500</td>
-                    <td>Active</td>
-                    <td>BBB</td>
-                    <td>Electronic</td>
-                    <td>Bengaluru</td>
-                    <td>
-                        <button><i class="fa fa-edit"></i></button>
-                        <button><i class="fa fa-eye"></i></button>
-                        <button><i class="fa fa-trash"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Product1</td>
-                    <td>Mobile</td>
-                    <td>Great product</td>
-                    <td>500</td>
-                    <td>Active</td>
-                    <td>BBB</td>
-                    <td>Electronic</td>
-                    <td>Bengaluru</td>
-                    <td>
-                        <button><i class="fa fa-edit"></i></button>
-                        <button><i class="fa fa-eye"></i></button>
-                        <button><i class="fa fa-trash"></i></button>
-                    </td>
-                    <tr>
-                        <td>4</td>
-                        <td>Product1</td>
-                        <td>Mobile</td>
-                        <td>Great product</td>
-                        <td>500</td>
-                        <td>Active</td>
-                        <td>BBB</td>
-                        <td>Electronic</td>
-                        <td>Bengaluru</td>
-                        <td>
-                            <button><i class="fa fa-edit"></i></button>
-                            <button><i class="fa fa-eye"></i></button>
-                            <button><i class="fa fa-trash"></i></button>
-                        </td>
-                        <tr>
-                    <td>5</td>
-                    <td>Product1</td>
-                    <td>Mobile</td>
-                    <td>Great product</td>
-                    <td>500</td>
-                    <td>Active</td>
-                    <td>BBB</td>
-                    <td>Electronic</td>
-                    <td>Bengaluru</td>
-                    <td>
-                        <button><i class="fa fa-edit"></i></button>
-                        <button><i class="fa fa-eye"></i></button>
-                        <button><i class="fa fa-trash"></i></button>
-                  </td>
-                  <tr>
-                    <td>6</td>
-                    <td>Product1</td>
-                    <td>Mobile</td>
-                    <td>Great product</td>
-                    <td>500</td>
-                    <td>Active</td>
-                    <td>BBB</td>
-                    <td>Electronic</td>
-                    <td>Bengaluru</td>
-                    <td>
-                        <button><i class="fa fa-edit"></i></button>
-                        <button><i class="fa fa-eye"></i></button>
-                        <button><i class="fa fa-trash"></i></button>
-                    </td>
-                </tr>
+            
+           
+
+                <!-- Row Insert-->
+            </tbody>
+            
                 
             </table>
 
         </div>
        
 
-        <!-- form -->
+        <!-- form for add product -->
 
         <div id="form_page">
             <div class="div1">
-                <p>Edit Product</p>
+                <p>Add Product</p>
                 <button id="close" onclick="formClose()"><i class="fa fa-close"></i></button>
 
             </div>
@@ -182,7 +113,7 @@
 
             <div class="form_details">
 
-            <form action="">
+            <form >
             <div class="div2">
                 <div class="div2_div1">
                     <label for="name">Name</label><br>
@@ -252,9 +183,10 @@
                     <Input type="number" id="limit" placeholder="100"></Input>
                 </div>
             </div>
+
             <div class="div9">
-                <input style="background-color: rgb(238, 40, 40);" type="button" value="Cancel">
-                <input style="background-color: rgb(35, 206, 35);" type="submit">
+                <input style="background-color: rgb(238, 40, 40);" type="button" value="Cancel" onclick="formClose()">
+                <input style="background-color: rgb(35, 206, 35);" type="button" value="Submit" onclick="readFormData()">
             </div>
 
 
@@ -263,6 +195,201 @@
 
         </div>
         </div>
+
+
+
+        <!-- form for edit product -->
+
+        <div id="form_page_edit">
+            <div class="div1">
+                <p>Edit Product</p>
+                <button id="close" onclick="formClose()"><i class="fa fa-close"></i></button>
+
+            </div>
+
+
+
+
+            <div class="form_details">
+
+            <form >
+            <div class="div2">
+                <div class="div2_div1">
+                    <label for="name">Name</label><br>
+                     <Input type="text" id="name1" placeholder="laptop"></Input>
+                </div>
+
+                <div> 
+                    <label for="title1">Title</label><br>
+                    <Input type="text" id="title1" placeholder="Dell XPS 15"></Input>
+                </div>
+            </div>
+
+            <div class="div3">
+                <label for="description">Description</label><br>
+                <textarea name="" id="description1"></textarea>
+            </div>
+
+            <div class="div4">
+                <div>
+                    <label for="vendor">Vendor</label><br>
+                    <Input type="text" id="vendor1" placeholder="Dell"></Input>
+                </div>
+            
+                <div>
+                    <label for="product_type">Product Type</label><br>
+                 <Input type="text" id="product_type1" placeholder="Electronics"></Input>
+                </div>
+            </div>
+
+            <div class="div5">
+                <label for="address">Address</label><br>
+                <Input type="text" id="address1" placeholder="warehouse A"></Input>
+            </div>
+
+            <div class="div6">
+                
+            
+                <div><label for="stock">In Stock</label><br>
+                    <Input type="number" id="stock1" placeholder="50"></Input></div>
+
+                <div>
+                    <label for="buyPrice">Buying Price</label><br>
+                    <Input type="number" id="buyPrice1" placeholder="1200"></Input>
+                </div>
+            </div>
+
+            <div class="div7">
+                <div>
+                    <label for="salePrice">Sale Price</label><br>
+                    <Input type="number" id="salePrice1" placeholder="1500"></Input>
+                </div>
+                
+
+                <div><label for="quantity">Purchase Quantity</label><br>
+                    <Input type="number" id="quantity1" placeholder="10"></Input>
+                </div>
+            </div>
+
+            <div class="div8">
+
+                <div>
+                    <label for="rates">Shipping Rates</label><br>
+                    <Input type="number" id="rates1" placeholder="10"></Input></div>
+
+                <div>
+                    <label for="limit">Refill Limit</label><br>
+                    <Input type="number" id="limit1" placeholder="100"></Input>
+                </div>
+            </div>
+            <div class="div9">
+                <input style="background-color: rgb(238, 40, 40);" type="button" value="Cancel" onclick="formClose()">
+                <input style="background-color: rgb(35, 206, 35);" type="button" value="Submit" onclick="">
+            </div>
+
+            </form>
+
+        </div>
+        </div>
+
+        <!-- Form for View-->
+
+        <div id="form_page_view">
+            <div class="div1">
+                <p>Product Details</p>
+                <button id="close" onclick="formClose()"><i class="fa fa-close"></i></button>
+
+            </div>
+
+
+
+
+            <div class="form_details">
+
+            <form >
+            <div class="div2">
+                <div class="div2_div1">
+                    <label for="name">Name</label><br>
+                     <Input type="text" id="name2" placeholder="laptop"></Input>
+                </div>
+
+                <div> 
+                    <label for="title1">Title</label><br>
+                    <Input type="text" id="title2" placeholder="Dell XPS 15"></Input>
+                </div>
+            </div>
+
+            <div class="div3">
+                <label for="description">Description</label><br>
+                <textarea name="" id="description2"></textarea>
+            </div>
+
+            <div class="div4">
+                <div>
+                    <label for="vendor">Vendor</label><br>
+                    <Input type="text" id="vendor2" placeholder="Dell"></Input>
+                </div>
+            
+                <div>
+                    <label for="product_type">Product Type</label><br>
+                 <Input type="text" id="product_type2" placeholder="Electronics"></Input>
+                </div>
+            </div>
+
+            <div class="div5">
+                <label for="address">Address</label><br>
+                <Input type="text" id="address2" placeholder="warehouse A"></Input>
+            </div>
+
+            <div class="div6">
+                
+            
+                <div><label for="stock">In Stock</label><br>
+                    <Input type="number" id="stock2" placeholder="50"></Input></div>
+
+                <div>
+                    <label for="buyPrice">Buying Price</label><br>
+                    <Input type="number" id="buyPrice2" placeholder="1200"></Input>
+                </div>
+            </div>
+
+            <div class="div7">
+                <div>
+                    <label for="salePrice">Sale Price</label><br>
+                    <Input type="number" id="salePrice2" placeholder="1500"></Input>
+                </div>
+                
+
+                <div><label for="quantity">Purchase Quantity</label><br>
+                    <Input type="number" id="quantity2" placeholder="10"></Input>
+                </div>
+            </div>
+
+            <div class="div8">
+
+                <div>
+                    <label for="rates">Shipping Rates</label><br>
+                    <Input type="number" id="rates2" placeholder="10"></Input></div>
+
+                <div>
+                    <label for="limit">Refill Limit</label><br>
+                    <Input type="number" id="limit2" placeholder="100"></Input>
+                </div>
+            </div>
+            <div class="div9" style="margin-left: 20%;">
+                <input style="background-color: rgb(238, 40, 40);" type="button" value="Cancel" onclick="formClose()">
+    
+            </div>
+
+            </form>
+
+        </div>
+        </div>
+
+
+
+
+
     </div>
 
         <script src="/javascript/front.js"></script>  
