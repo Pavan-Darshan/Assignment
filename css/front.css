@@ -19,16 +19,16 @@
 .main_contents>div>p:nth-child(odd){
     padding-left: 15px;
     font-size: 20px;
-    color: blue;
+    color: rgb(6, 6, 18);
 }
 .main_contents>div>p:nth-child(even){
     padding-left: 15px;
     font-size: 42px;
     color: rgb(0, 0, 0);
-    text-shadow: 2px 2px  5px rgb(206, 10, 43);
+    text-shadow: 2px 2px  5px rgb(90, 12, 25);
 }
 .main_contents i{
-    color: rgb(206, 10, 43);
+    color: rgb(12, 189, 118);
    font-size: 25px;
    margin-left: 40px;
 }

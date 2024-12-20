@@ -1,8 +1,7 @@
-class dataRetrive{
-    constructor(){
-        
-    
-    let info=[
+function my(){
+
+
+    const info=[
         {   prod_id:11111,
             name:"Samsung s24",
              title:"Mobile",
@@ -18,19 +17,20 @@ class dataRetrive{
              status:"Active"
              }
              
-             
          
          ];
-        }
 
 
-    my(){
-        return info.name;
-    }
+       console.log(info)
+         
+       
     
 }
 
-export default  a=1000;
+
+export  {my} ;
+
+
 
 
 

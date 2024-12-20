@@ -1,4 +1,7 @@
 
+
+
+
 var myActive=12,myCancelled=1,myDraft=4,myDelivered=45,myShiped =39;
 
 function openSideBar(){
@@ -14,6 +17,8 @@ function closeSideBar(){
 
 
 function addProduct(){
+    
+
     
     document.getElementById("form_page").style.display='block';
     document.getElementById("form_page").style.right='25%';
@@ -171,12 +176,9 @@ var array=[
 
 loadData();
 
-
-
-
-
  
 function readFormData(){
+    
     var formData= {};
     formData["name"]=document.getElementById("name").value;
     formData["title"]=document.getElementById("title").value;
@@ -466,7 +468,7 @@ function countRefresh(){
                 break;
          }
     });
-         
+        
     
     document.getElementById("active_count").innerHTML=myActive;
     document.getElementById("cancelled_count").innerHTML=myCancelled;
@@ -474,9 +476,8 @@ function countRefresh(){
     document.getElementById("delivered_count").innerHTML=myDelivered;
     document.getElementById("shipped_count").innerHTML=myShiped;
     
+
+   
+   
 }
 countRefresh();
-
-
-
-
