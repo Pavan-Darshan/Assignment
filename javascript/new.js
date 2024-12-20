@@ -1,9 +1,6 @@
 
 var myActive=12,myCancelled=1,myDraft=4,myDelivered=45,myShiped =39;
 
-
-
-
 function openSideBar(){
     document.getElementById("sideBar").style.display="block";
     document.getElementById("menu_button").style.display='none';
@@ -83,7 +80,92 @@ var array=[
              quantity:"32",
              shipping_price:"20",
              status:"Cancelled"
-             }
+             },
+             {  prod_id:1003,
+                name:"Nike",
+                 title:"Shoe",
+                 description:"white color",
+                 vendor:"Nike",
+                 product_type:"Footware",
+                 address:"Bengaluru",
+                 stock:"22",
+                 buyPrice:"2800",
+                 salePrice:"4300",
+                 quantity:"37",
+                 shipping_price:"18",
+                 status:"Active"
+                 },
+                 {  prod_id:1004,
+                    name:"Salt",
+                     title:"Grogery",
+                     description:"1kg",
+                     vendor:"Tata",
+                     product_type:"Grogery",
+                     address:"Mysuru",
+                     stock:"148",
+                     buyPrice:"45",
+                     salePrice:"68",
+                     quantity:"370",
+                     shipping_price:"180",
+                     status:"Active"
+                     },
+                     {  prod_id:1005,
+                        name:"Salt",
+                         title:"Grogery",
+                         description:"1kg",
+                         vendor:"Tata",
+                         product_type:"Grogery",
+                         address:"Kerala",
+                         stock:"249",
+                         buyPrice:"149",
+                         salePrice:"278",
+                         quantity:"1028",
+                         shipping_price:"687",
+                         status:"cancelled"
+                         },
+                         {  prod_id:1006,
+                            name:"Bat ",
+                             title:"Bat",
+                             description:"Bat24size",
+                             vendor:"Nivia",
+                             product_type:"Sports",
+                             address:"Kolkata",
+                             stock:"149",
+                             buyPrice:"85",
+                             salePrice:"46",
+                             quantity:"785",
+                             shipping_price:"521",
+                             status:"Shipped"
+                             },
+                             {  prod_id:1007,
+                                name:"Jean ",
+                                 title:"Jean black",
+                                 description:"Large",
+                                 vendor:"Livies",
+                                 product_type:"Fashion",
+                                 address:"Bengaluru",
+                                 stock:"279",
+                                 buyPrice:"879",
+                                 salePrice:"1500",
+                                 quantity:"456",
+                                 shipping_price:"357",
+                                 status:"Delivered"
+                                 },
+                                 {  prod_id:1008,
+                                    name:"Jean ",
+                                     title:"Jean black",
+                                     description:"Large",
+                                     vendor:"Livies",
+                                     product_type:"Fashion",
+                                     address:"Bengaluru",
+                                     stock:"279",
+                                     buyPrice:"879",
+                                     salePrice:"1500",
+                                     quantity:"456",
+                                     shipping_price:"357",
+                                     status:"Delivered"
+                                     }
+         
      
      ];
 
@@ -153,6 +235,7 @@ try {
 } catch (error) {
     
 }
+storeData(array);
 }
 
 
@@ -185,6 +268,7 @@ function onView(rowData){
 
     });
     viewProduct();
+    
 
     // let str1=localStorage.getItem(0);
     // console.log(str1);
@@ -227,6 +311,8 @@ function onEdit(rowData){
 function update(data){
        
     let prodID=document.getElementById("prod_id1").value;
+
+    console.log(prodID);
     
 
     array.forEach(index =>{
@@ -260,19 +346,30 @@ function update(data){
 
 
 function onDelete(data){
-    selectedRow = data.parentElement.parentElement;
+
+
+    let b=confirm('Do you want to delete this record?')
+
+    if(b==true)
+    {
+        selectedRow = data.parentElement.parentElement;
 
     rowId=selectedRow.cells[0].innerHTML;
 
     array.forEach(index =>{
         if(rowId==index.prod_id)
-        {
-           array.splice((selectedRow.rowIndex)-1,1);
+        {  
+                array.splice((selectedRow.rowIndex)-1,1);
             
         }
     loadData();
    
     });
+    }
+    else {
+        return 0;
+    }
+  
 }
 
 
@@ -284,66 +381,6 @@ const filterOptions = (data) => {
 	const selection = option.replace('&', '')
     console.log(selection.toLowerCase());
 
-    if(selection.toLowerCase()=="all"){
-        
-
-
-        var html=`<thead>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Status</th>
-        <th>Vendoe Name</th>
-        <th>Product Type</th>
-        <th>Address</th>
-        <th>Actions</th>
-    
-    </thead>
-<tbody>`;
-array.forEach(element => {
-html+=`<tr><td>`+element.prod_id+`</td><td>`+element.name+`</td><td>`+element.title+
-`</td><td>`+element.description+`</td><td>`+element.salePrice+`</td><td>`+
-element.status+`</td><td>`+element.vendor+`</td><td>`+element.product_type+
-`</td><td>`+element.address+`</td><td>`+`<button onclick="onEdit(this)"><i class="fa fa-edit"></i></button>
-            <button onclick="onView(this)"> <i class="fa fa-eye"></i></button>
-            <button onclick="onDelete(this)"><i class="fa fa-trash"></i></button></td></tr>`
-
-    });
-html+=`</tbody>`;
-try {
-document.getElementById("table_data").innerHTML=html;
-
-} catch (error) {
-
-}
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-    
 
     array.forEach(index =>{
         if(selection.toLowerCase()==index.product_type.toLowerCase())
@@ -353,6 +390,7 @@ document.getElementById("table_data").innerHTML=html;
         else{
             temp2.push(index);
         }
+        
     });
     var html=`<thead>
                     <th>ID</th>
@@ -385,6 +423,19 @@ try {
 } catch (error) {
     
 }
+
+
+// store------------------------------------------------->
+
+
+function storeData(x){
+
+    let str=JSON.stringify(x);
+    localStorage.setItem("table_data",str);
+
+}
+
+
 
 
 // count operation----------------------------------------->
@@ -425,5 +476,7 @@ function countRefresh(){
     
 }
 countRefresh();
+
+
 
 
