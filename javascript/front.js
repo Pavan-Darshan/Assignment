@@ -1,10 +1,12 @@
 
 var selectedRow=null;
 
+var myActive,myCanceled,myDraft,myDelivered,myShiped;
+
 function openSideBar(){
     document.getElementById("sideBar").style.display="block";
     document.getElementById("menu_button").style.display='none';
-    // document.getElementsByClassName("main_Product").style.width='50%';
+    // document.getElementById("main_Product").style.width='50%';
 }
 
 function closeSideBar(){
@@ -61,7 +63,7 @@ function readFormData(){
     formData["salePrice"]=document.getElementById("salePrice").value;
     formData["quantity"]=document.getElementById("quantity").value;
     formData["rates"]=document.getElementById("rates").value;
-    formData["limit"]=document.getElementById("limit").value;
+    formData["status"]=document.getElementById("status").value;
     console.log(formData);
     insertNewData(formData);
 }
@@ -100,9 +102,20 @@ function readFormData(){
     var cell9 = newRow.insertCell(8);
         cell9.innerHTML = data.address;
         
-
     var cell10 = newRow.insertCell(9);
-        cell10.innerHTML = `<button onclick="onEdit(this)"><i class="fa fa-edit"></i></button>
+    cell10.innerHTML = data.buyPrice;
+
+    var cell11 = newRow.insertCell(10);
+    cell11.innerHTML = data.quantity;
+
+    var cell12 = newRow.insertCell(11);
+    cell12.innerHTML = data.rates;
+
+    var cell13 = newRow.insertCell(12);
+    cell13.innerHTML = data.stock;
+
+    var cell14 = newRow.insertCell(13);
+        cell14.innerHTML = `<button onclick="onEdit(this)"><i class="fa fa-edit"></i></button>
                         <button onclick="onView(this)"> <i class="fa fa-eye"></i></button>
                         <button onclick="onDelete(this)"><i class="fa fa-trash"></i></button>`;
 
@@ -116,10 +129,14 @@ function readFormData(){
     document.getElementById("title1").value=selectedRow.cells[2].innerHTML;
     document.getElementById("description1").value=selectedRow.cells[3].innerHTML;
     document.getElementById("salePrice1").value=selectedRow.cells[4].innerHTML;
-    // document.getElementById("status1").value="active";
+    document.getElementById("status1").value=selectedRow.cells[5].innerHTML;
     document.getElementById("vendor1").value=selectedRow.cells[6].innerHTML;
     document.getElementById("product_type1").value=selectedRow.cells[7].innerHTML;
     document.getElementById("address1").value=selectedRow.cells[8].innerHTML;
+    document.getElementById("buyPrice1").value=selectedRow.cells[9].innerHTML;
+    document.getElementById("quantity1").value=selectedRow.cells[10].innerHTML;
+    document.getElementById("rates1").value=selectedRow.cells[11].innerHTML;
+    document.getElementById("stock1").value=selectedRow.cells[12].innerHTML;
     editProduct(selectedRow);
     
  }
@@ -139,13 +156,100 @@ function readFormData(){
         document.getElementById("title2").value=selectedRow.cells[2].innerHTML;
         document.getElementById("description2").value=selectedRow.cells[3].innerHTML;
         document.getElementById("salePrice2").value=selectedRow.cells[4].innerHTML;
-        // document.getElementById("status1").value="active";
+        document.getElementById("status2").value=selectedRow.cells[5].innerHTML;
         document.getElementById("vendor2").value=selectedRow.cells[6].innerHTML;
         document.getElementById("product_type2").value=selectedRow.cells[7].innerHTML;
         document.getElementById("address2").value=selectedRow.cells[8].innerHTML;
+        document.getElementById("buyPrice2").value=selectedRow.cells[9].innerHTML;
+        document.getElementById("quantity2").value=selectedRow.cells[10].innerHTML;
+        document.getElementById("rates2").value=selectedRow.cells[11].innerHTML;
+        document.getElementById("stock2").value=selectedRow.cells[12].innerHTML;
         viewProduct();
         
  }
+
+
+function myRefresh(){
+    let myCell
+    const tableData=document.querySelector("#table_data tbody");
+
+
+    console.log(tableData.rows.length);
+    
+    for(let i=0;i<tableData.rows.length;i++){
+
+        const myRow = tableData.rows[i];
+        
+         myCell = myRow.cells[5].innerHTML;
+
+         console.log(myCell);
+
+         switch (myCell.toLowerCase()) {
+            case "active":
+                myActive+=1;
+                break;
+
+            case "cancel":
+                myCanceled+=1;
+                break;
+
+            case "draft":
+                myDraft+=1;
+                break;
+
+            case "delivered":
+                myDelivered+=1;
+                break;
+         
+            default:
+                    myShiped+=1;
+                break;
+         }
+         
+    }
+    document.getElementById("active_count").value=myActive;
+    
+}
+
+
+//  category
+
+ 
+
+ const filterOptions = () => {
+    
+    let myCell
+	const option = document.querySelector("#filter").value;
+	const selection = option.replace('&', '')
+    console.log(selection);
+
+    const tableData=document.querySelector("#table_data tbody");
+    // console.log(tableData.rows[2]);
+    // const rowData = tableData.rows
+	for(let i=0;i<tableData.rows.length;i++){
+
+        const myRow = tableData.rows[i];
+        
+         myCell = myRow.cells[7].innerHTML;
+
+         if(selection.toLowerCase() == myCell.toLowerCase()){
+            // document.getElementById("table_data").style.display="none";
+            
+         }
+         else{
+            myRow.style.display="none";
+         }
+
+    }
+    
+};
+try {
+    document.getElementById("filter").addEventListener("change",filterOptions);
+
+} catch (error) {
+    
+}
+
 
 
 

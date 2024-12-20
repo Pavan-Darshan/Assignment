@@ -7,7 +7,7 @@
     </head>
 
     <body>
-     <div class="all_main">
+     <div id="all_main">
         <div id="sideBar">
             <p>Product Management</p><hr>
             <button class="sideBar_close" onclick="closeSideBar()">Close &times;</button>
@@ -15,9 +15,9 @@
             <div class="link_tag"><a href="/html/product.html">Products</a> </div>
         </div>
 
-        <div class="main">
+        <div id="main">
             <div class="menu">
-                <button id="menu_button" onclick="openSideBar()" style="border:none;">
+                <button id="menu_button" onclick="openSideBar()" >
                     <div></div>
                     <div></div>
                     <div></div>
@@ -28,26 +28,27 @@
             </div>
             <div class="main_contents">
                 <div class="active">
-                    <p>Active</p>
-                    <p class="active_count">0</p>
+                    <p>Active &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-cube"></i></p>
+                    <p id="active_count">0</p>
                 </div>
                 <div class="cancelled">
-                    <p>Cancelled</p>
-                    <p class="cancelled_count">0</p>
+                    <p>Cancelled &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-ban" aria-hidden="true"></i></p>
+                    <p id="cancelled_count">0</p>
                 </div>
                 <div class="draft">
-                    <p>Draft</p>
-                    <p class="draft_count">0</p>
+                    <p>Draft &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-file-text" aria-hidden="true"></i></p>
+                    <p id="draft_count">0</p>
                 </div>
                 <div class="delivered">
-                    <p>Delivered</p>
-                    <p class="delivered_count">0</p>
+                    <p>Delivered &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i></p>
+                    <p id="delivered_count">0</p>
                 </div>
                 <div class="shipped">
-                    <p>Shipped</p>
-                    <p class="shipped_count">0</p>
+                    <p>Shipped &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-truck" aria-hidden="true"></i></p>
+                    <p id="shipped_count">0</p>
                 </div>
             </div>
+           
         </div> 
     </div>
 
@@ -61,7 +62,8 @@
 
 
 
-
-        <script src="/javascript/front.js"></script>  
+    
+        <script  src="/javascript/new.js"></script>  
+      
     </body>
 </html>

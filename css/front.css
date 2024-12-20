@@ -15,7 +15,22 @@
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     grid-column-gap: 15px;
-    
+}
+.main_contents>div>p:nth-child(odd){
+    padding-left: 15px;
+    font-size: 20px;
+    color: blue;
+}
+.main_contents>div>p:nth-child(even){
+    padding-left: 15px;
+    font-size: 42px;
+    color: rgb(0, 0, 0);
+    text-shadow: 2px 2px  5px rgb(206, 10, 43);
+}
+.main_contents i{
+    color: rgb(206, 10, 43);
+   font-size: 25px;
+   margin-left: 40px;
 }
 /* Menu button*/
 #menu_button div {
@@ -76,7 +91,7 @@
     font-size: 16px;
     margin-bottom: 3%;
 }
-.main{
+#main{
    
     width: 80%;
     height: 100%;
@@ -145,6 +160,7 @@
     display: grid;
     grid-template-columns: auto auto;
     position: relative;
+    margin-left: 50px;
 
 }
 #search{
@@ -167,15 +183,18 @@
     border-radius: 10px;
     border: none;
 }
-#all_button button{
+#selectButton select{
     position: absolute;
-    right: 50px;
+    right: 100px;
     top: 10px;
     width: 15%;
     height: 50%;
     border-radius: 10px;
     border: 1px solid black;
     outline: none;
+}
+#selectButton option{
+    text-align: center;
 }
 
 
@@ -197,6 +216,8 @@
     width: 100%;
     position: relative;
     top: 5%;
+    margin-left:12%;
+    margin-top: 50px;
     
 }
 .table_main i{
