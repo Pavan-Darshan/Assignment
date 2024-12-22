@@ -1,43 +1,57 @@
 
 
+var myActive = 0 , myCancelled = 0 , myDraft = 0 , myDelivered = 0,myShiped = 0;
+let idValue;
+const productIdArray=[];
 
-
-var myActive=12,myCancelled=1,myDraft=4,myDelivered=45,myShiped =39;
+document.getElementById("menu_button").addEventListener('click',openSideBar)
 
 function openSideBar(){
     document.getElementById("sideBar").style.display="block";
-    document.getElementById("menu_button").style.display='none';
-    // document.getElementById("main_Product").style.width='50%';
-}
+    document.getElementById("menu_button").style.display='block';
+    document.getElementById("menu_button").removeEventListener('click',openSideBar)
+    document.getElementById("menu_button").addEventListener('click',closeSideBar)
+
+ }
 
 function closeSideBar(){
+    
     document.getElementById("sideBar").style.display="none";
     document.getElementById("menu_button").style.display='block';
+    document.getElementById("menu_button").removeEventListener('click',closeSideBar)
+    document.getElementById("menu_button").addEventListener('click',openSideBar)
 }
 
 
 function addProduct(){
     
+    // Id generator
+    idValue=idGenerator();
 
-    
     document.getElementById("form_page").style.display='block';
-    document.getElementById("form_page").style.right='25%';
-    document.getElementById("main_Product").style.opacity="0.4";
-    document.getElementById("main_Product").style.cursor="none";
-    
+    document.getElementById("form_page").style.right='30%';
+    document.getElementById("form_page").style.zIndex='9999';
+    document.getElementById("prod_id").value=idValue;
+    document.getElementById("mask_window").style.display="block";
+    document.getElementById("mask_window").style.opacity="0.5";
+   
+     
 }
 function editProduct(){
     document.getElementById("form_page_edit").style.display='block';
     document.getElementById("form_page_edit").style.right='25%';
-    document.getElementById("main_Product").style.opacity="0.4";
-    document.getElementById("main_Product").style.cursor="none";
+    document.getElementById("mask_window").style.display="block";
+    document.getElementById("mask_window").style.opacity="0.5";
+    document.getElementById("form_page_edit").style.zIndex='9999';
     
 }
 function viewProduct(){
     document.getElementById("form_page_view").style.display='block';
     document.getElementById("form_page_view").style.right='25%';
-    document.getElementById("main_Product").style.opacity="0.4";
-    document.getElementById("main_Product").style.cursor="none";
+    document.getElementById("form_page_view").style.zIndex='9999';
+    document.getElementById("mask_window").style.display="block";
+    document.getElementById("mask_window").style.opacity="0.5";
+
 
 }
 
@@ -50,10 +64,14 @@ function formClose(){
     document.getElementById("form_page_view").style.display="none";
     document.getElementById("form_page_view").style.right='-700px';
     document.getElementById("form_page_edit").style.display="none";
-    document.getElementById("main_Product").style.opacity="1";
-    document.getElementById("main_Product").style.cursor="auto"; 
+    document.getElementById("mask_window").style.display="none";
+    document.getElementById("form_page").style.zIndex='-100';
+    document.getElementById("form_page_edit").style.zIndex='-100';
+    document.getElementById("form_page_view").style.zIndex='-100';
 
 }
+
+
 
 
 // Array from local storage
@@ -172,13 +190,77 @@ var array=[
                                      }
          
      
-     ];
+];
 
+
+
+
+storeData(array);
 loadData();
+
+
+// Auto product Id Creator
+
+function idGenerator(){
+    const arrayLength=array.length;
+
+  if(arrayLength<=0){
+    return 1001;
+
+  }
+  else{
+    array.sort();
+
+   for(let i=1;i<array.length;i++)
+    {
+       if(!((array[i-1].prod_id) == ((array[i].prod_id)-1)))
+        {    
+            if(productIdArray.length<=0)
+                return  arrayLength+1001;
+            else
+            {
+                productIdArray.sort((x,y) => { return y-x});
+                return productIdArray.pop();  
+            }
+            
+       }
+    }
+
+          
+
+
+   }
+
+return  (array[arrayLength-1].prod_id)+1; 
+}
+
+
+
+// store------------------------------------------------->
+
+
+function storeData(x){
+    let keyName=localStorage.key("table_data");
+
+    if(keyName)
+    {
+        const str=localStorage.getItem(keyName);
+        array=JSON.parse(str);
+    }
+    else{
+        let str = JSON.stringify(array);
+        localStorage.setItem("table_data",str);
+    }
+
+}
+
+
 
  
 function readFormData(){
     
+    //data fetching from form to array as object
+
     var formData= {};
     formData["name"]=document.getElementById("name").value;
     formData["title"]=document.getElementById("title").value;
@@ -190,20 +272,15 @@ function readFormData(){
     formData["buyPrice"]=document.getElementById("buyPrice").value;
     formData["salePrice"]=document.getElementById("salePrice").value;
     formData["quantity"]=document.getElementById("quantity").value;
-    formData["prod_id"]=document.getElementById("prod_id").value;
+    formData["prod_id"]=idValue;
     formData["status"]=document.getElementById("status").value;
+
+  
+
+
     
-    // let rest=localStorage.getItem("table_data");
-    // array=JSON.parse(rest);
-
- array.push(formData);
- loadData();
- 
-//  let str=JSON.stringify(array);
-//  localStorage.setItem("table_data",str);
-//  loadData();
-
- 
+ array.push(formData);  // adding new array item
+ loadData();  // loading the table
 }
 
 function loadData(){    
@@ -231,13 +308,19 @@ array.forEach(element => {
     
 });
 html+=`</tbody>`;
+
+    //   store the data into local storage
+    localStorage.setItem("table_data",(JSON.stringify(array)));
+
+
 try {
     document.getElementById("table_data").innerHTML=html;
     
 } catch (error) {
+    console.log("Error in table loading....!  "+error);
     
 }
-storeData(array);
+
 }
 
 
@@ -270,10 +353,6 @@ function onView(rowData){
 
     });
     viewProduct();
-    
-
-    // let str1=localStorage.getItem(0);
-    // console.log(str1);
     
 }
 
@@ -324,7 +403,7 @@ function update(data){
             index.title=document.getElementById("title1").value;
             index.description=document.getElementById("description1").value;
             index.salePrice= document.getElementById("salePrice1").value;
-            index.status=document.getElementById("status1").value=
+            index.status=document.getElementById("status1").value;
             index.vendor=document.getElementById("vendor1").value;
             index.product_type=document.getElementById("product_type1").value;
             index.address=document.getElementById("address1").value;
@@ -346,33 +425,63 @@ function update(data){
 
 // DELETE OPERATION--------------------------------------------->
 
+var b,deletedata;
 
-function onDelete(data){
+function cancelFun(x){
+    document.getElementById("delete_window_main").style.display="none";
+    document.getElementById("mask_window").style.display="none";
+    return 0;
+}
 
+function confirmFun(x)
+{
+    document.getElementById("delete_window_main").style.display="none";
+    document.getElementById("mask_window").style.display="none";
+    deleteRecord(x,deletedata);
+}
 
-    let b=confirm('Do you want to delete this record?')
+function onDelete(data)
+{
+    document.getElementById("delete_window_main").style.display="block";
+    document.getElementById("mask_window").style.display="block";
+    deletedata=data;
+
+}
+
+function deleteRecord(b,data){
 
     if(b==true)
-    {
-        selectedRow = data.parentElement.parentElement;
-
-    rowId=selectedRow.cells[0].innerHTML;
-
-    array.forEach(index =>{
-        if(rowId==index.prod_id)
-        {  
-                array.splice((selectedRow.rowIndex)-1,1);
-            
+        {
+            selectedRow = data.parentElement.parentElement;
+        
+            rowId=selectedRow.cells[0].innerHTML;
+        
+            array.forEach(index =>{
+                if(rowId==index.prod_id)    
+                {    
+                    // ID DELETED ARRAY  
+                    productIdArray.push(index.prod_id);
+                    productIdArray.sort((x,y) => { return y-x});
+        
+                    // DELETE OBJECT FROM ARRAY
+                    array.splice((array.indexOf(index)),1);
+                    loadData();
+                }
+           
+           
+            });
         }
-    loadData();
-   
-    });
-    }
-    else {
-        return 0;
-    }
-  
+        else 
+        {
+            return 0;
+        }
+          
+
+
+    
 }
+
+
 
 
 // filter option------------------------------------------>
@@ -383,6 +492,12 @@ const filterOptions = (data) => {
 	const selection = option.replace('&', '')
     console.log(selection.toLowerCase());
 
+   if(selection== "all"){
+
+    loadData();
+    return 0;
+
+   }
 
     array.forEach(index =>{
         if(selection.toLowerCase()==index.product_type.toLowerCase())
@@ -427,15 +542,44 @@ try {
 }
 
 
-// store------------------------------------------------->
+
+// search operation--------------------------------------->
 
 
-function storeData(x){
+function serach(){
+    let val=document.getElementById("seachItem").value;
+    let x=0;
+    array.forEach(index => {
+        if(index.prod_id == val)
+        {
 
-    let str=JSON.stringify(x);
-    localStorage.setItem("table_data",str);
+                var html=`<thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Vendoe Name</th>
+                    <th>Product Type</th>
+                    <th>Address</th>
+                    <th>Actions</th></thead>
+                 <tbody><tr><td>`+index.prod_id+`</td><td>`+index.name+`</td><td>`+index.title+
+                 `</td><td>`+index.description+`</td><td>`+index.salePrice+`</td><td>`+
+                 index.status+`</td><td>`+index.vendor+`</td><td>`+index.product_type+
+                `</td><td>`+index.address+`</td><td>`+`<button onclick="onEdit(this)"><i class="fa fa-edit"></i></button>
+                 <button onclick="onView(this)"> <i class="fa fa-eye"></i></button>
+                 <button onclick="onDelete(this)"><i class="fa fa-trash"></i></button></td></tr></tbody>`;
+                // loading on table
+                 document.getElementById("table_data").innerHTML=html;
+            return x=1;
+        }
+    })
 
+    if(x==0)
+     alert("Product ID Not Found......!");
 }
+
 
 
 
@@ -463,13 +607,14 @@ function countRefresh(){
                 myDelivered+=1;
                 break;
          
-            default:
+            case "shipped":
                     myShiped+=1;
                 break;
          }
     });
         
-    
+    try {
+        
     document.getElementById("active_count").innerHTML=myActive;
     document.getElementById("cancelled_count").innerHTML=myCancelled;
     document.getElementById("draft_count").innerHTML=myDraft;
@@ -477,6 +622,10 @@ function countRefresh(){
     document.getElementById("shipped_count").innerHTML=myShiped;
     
 
+        
+    } catch (error) {
+        
+    }
    
    
 }
