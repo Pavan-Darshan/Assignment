@@ -120,10 +120,10 @@ var array=[
                  },
                  {  prod_id:1004,
                     name:"Salt",
-                     title:"Grogery",
+                     title:"Grocery",
                      description:"1kg",
                      vendor:"Tata",
-                     product_type:"Grogery",
+                     product_type:"Grocery",
                      address:"Mysuru",
                      stock:"148",
                      buyPrice:"45",
@@ -134,10 +134,10 @@ var array=[
                      },
                      {  prod_id:1005,
                         name:"Salt",
-                         title:"Grogery",
+                         title:"Grocery",
                          description:"1kg",
                          vendor:"Tata",
-                         product_type:"Grogery",
+                         product_type:"Grocery",
                          address:"Kerala",
                          stock:"249",
                          buyPrice:"149",
@@ -187,8 +187,7 @@ var array=[
                                      quantity:"456",
                                      shipping_price:"357",
                                      status:"Delivered"
-                                     }
-         
+                                     }      
      
 ];
 
@@ -297,7 +296,7 @@ var html=`<thead>
             <tbody>`;
 array.forEach(element => {
    html+=`<tr><td>`+element.prod_id+`</td><td>`+element.name+`</td><td>`+element.title+
-   `</td><td>`+element.description+`</td><td>`+element.salePrice+`</td><td>`+
+   `</td><td id="tooltip" title="`+element.description+`">`+element.description+`</td><td>`+element.salePrice+`</td><td>`+
    element.status+`</td><td>`+element.vendor+`</td><td>`+element.product_type+
    `</td><td>`+element.address+`</td><td>`+`<button onclick="onEdit(this)"><i class="fa fa-edit"></i></button>
                         <button onclick="onView(this)"> <i class="fa fa-eye"></i></button>
@@ -433,17 +432,17 @@ function update(data){
 
 var b,deletedata;
 
-function cancelFun(x){
+function cancelDelete(){
     document.getElementById("delete_window_main").style.display="none";
     document.getElementById("mask_window").style.display="none";
     return 0;
 }
 
-function confirmFun(x)
+function confirmDelete()
 {
     document.getElementById("delete_window_main").style.display="none";
     document.getElementById("mask_window").style.display="none";
-    deleteRecord(x,deletedata);
+    deleteRecord(deletedata);
 }
 
 function onDelete(data)
@@ -454,37 +453,27 @@ function onDelete(data)
 
 }
 
-function deleteRecord(b,data){
+function deleteRecord(data){
+   
+    selectedRow = data.parentElement.parentElement;
 
-    if(b==true)
-        {
-            selectedRow = data.parentElement.parentElement;
-        
-            rowId=selectedRow.cells[0].innerHTML;
-        
-            array.forEach(index =>{
-                if(rowId==index.prod_id)    
-                {    
-                    // ID DELETED ARRAY  
-                    productIdArray.push(index.prod_id);
-                    productIdArray.sort((x,y) => { return y-x});
-        
-                    // DELETE OBJECT FROM ARRAY
-                    array.splice((array.indexOf(index)),1);
-                    loadData();
-                }
-           
-           
-            });
+    rowId=selectedRow.cells[0].innerHTML;
+
+    array.forEach(index =>{
+        if(rowId==index.prod_id)    
+        {    
+            // ID DELETED ARRAY  
+            productIdArray.push(index.prod_id);
+            productIdArray.sort((x,y) => { return y-x});
+
+            // DELETE OBJECT FROM ARRAY
+            array.splice((array.indexOf(index)),1);
+            loadData();
         }
-        else 
-        {
-            return 0;
-        }
-          
-
-
+        return 0;
     
+    });
+    return 0;
 }
 
 
@@ -496,7 +485,6 @@ const filterOptions = (data) => {
     var temp=[],temp2=[];
     const option = document.querySelector("#filter").value;
 	const selection = option.replace('&', '')
-    console.log(selection.toLowerCase());
 
    if(selection== "all"){
 
@@ -528,7 +516,7 @@ const filterOptions = (data) => {
                     <th>Actions</th></thead><tbody>`;
                     temp.forEach(element => {
                 html+=`<tr><td>`+element.prod_id+`</td><td>`+element.name+`</td><td>`+element.title+
-                `</td><td>`+element.description+`</td><td>`+element.salePrice+`</td><td>`+
+                `</td><td id="tooltip" title="`+element.description+`">`+element.description+`</td><td>`+element.salePrice+`</td><td>`+
                 element.status+`</td><td>`+element.vendor+`</td><td>`+element.product_type+
                 `</td><td>`+element.address+`</td><td>`+`<button onclick="onEdit(this)"><i class="fa fa-edit"></i></button>
                                         <button onclick="onView(this)"> <i class="fa fa-eye"></i></button>
@@ -571,7 +559,7 @@ function serach(){
                     <th>Address</th>
                     <th>Actions</th></thead>
                  <tbody><tr><td>`+index.prod_id+`</td><td>`+index.name+`</td><td>`+index.title+
-                 `</td><td>`+index.description+`</td><td>`+index.salePrice+`</td><td>`+
+                 `</td><td id="tooltip" title="`+element.description+`">`+index.description+`</td><td>`+index.salePrice+`</td><td>`+
                  index.status+`</td><td>`+index.vendor+`</td><td>`+index.product_type+
                 `</td><td>`+index.address+`</td><td>`+`<button onclick="onEdit(this)"><i class="fa fa-edit"></i></button>
                  <button onclick="onView(this)"> <i class="fa fa-eye"></i></button>
