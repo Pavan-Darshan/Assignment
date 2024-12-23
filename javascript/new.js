@@ -195,8 +195,8 @@ var array=[
 
 
 
-storeData(array);
-loadData();
+storeData(array); //get set data from local storage
+loadData();  // load data into table
 
 
 // Auto product Id Creator
@@ -236,7 +236,7 @@ return  (array[arrayLength-1].prod_id)+1;
 
 
 
-// store------------------------------------------------->
+// Store Operation in Local storage------------------------------------------------->
 
 
 function storeData(x){
@@ -275,10 +275,7 @@ function readFormData(){
     formData["prod_id"]=idValue;
     formData["status"]=document.getElementById("status").value;
 
-  
-
-
-    
+   
  array.push(formData);  // adding new array item
  loadData();  // loading the table
 }
@@ -361,14 +358,22 @@ function onView(rowData){
 // EDIT OPERATION--------------------->
 
 function onEdit(rowData){
+
+    
     
     selectedRow = rowData.parentElement.parentElement;
 
     rowId=selectedRow.cells[0].innerHTML;
-
+   let x=1;
     array.forEach(index =>{
         if(rowId==index.prod_id)
         {
+            if(index.status.toLocaleLowerCase() == "delivered"){
+                alert("Product was Delivered, only can view the details...");
+                return x=0;
+            }
+            
+
             document.getElementById("name1").value=index.name;
             document.getElementById("title1").value=index.title;
             document.getElementById("description1").value=index.description;
@@ -385,8 +390,9 @@ function onEdit(rowData){
         }
 
     });
-    editProduct();
-    
+    if(x==1){
+        editProduct();
+    }
 }
 
 function update(data){

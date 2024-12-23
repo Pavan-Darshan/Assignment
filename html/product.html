@@ -18,7 +18,7 @@
 
 
         <div id="main_Product">
-            <div id="menu1">
+            <div id="menu1" title="Menu">
                 <button id="menu_button" >
                     <div></div>
                     <div></div>
@@ -29,17 +29,17 @@
             <div id="add_product" >
                 <div id="head_name"><h1 >Products</h1></div>
 
-                <div><button id="add" onclick="addProduct()"><i class="fa fa-add">&nbsp;&nbsp;&nbsp;</i>ADD PRODUCT</button></div>
+                <div><button id="add" onclick="addProduct()" title="Add Product"><i class="fa fa-add">&nbsp;&nbsp;&nbsp;</i>ADD PRODUCT</button></div>
             </div>
 
             <div id="search_all">
                 <div id="search">
-                    <input type="search" placeholder="Serach.." id="seachItem">
+                    <input type="search" placeholder="Enter Product ID....." id="seachItem" title="Search">
                     <button type="submit" id="search_submit" onclick="serach()"><i class="fa fa-search"></i></button>
                 </div>
                 <div id="selectButton" >
-                    <select name="" id="filter" >
-                        
+                    <select name="" id="filter" title="Category">
+                        <option selected disabled >Filters</option>
                         <option value="all">All</option>
                         <option value="electronics">Electronics</option>
                         <option value="footware">Footware</option>
@@ -50,10 +50,11 @@
                 </div>
             </div>
 
-
-            <table class="table_main" id="table_data">
-              <!--Table data --> 
-            </table>
+            <div id="table_area">
+                <table class="table_main" id="table_data">
+                <!--Table data --> 
+                </table>
+            </div>
 
         </div>
        
@@ -63,7 +64,7 @@
         <div id="form_page">
             <div class="div1">
                 <p>Add Product</p>
-                <button id="close" onclick="formClose()"><i class="fa fa-close"></i></button>
+                <button id="close" onclick="formClose()" title="Add Product"><i class="fa fa-close"></i></button>
 
             </div>
 
@@ -74,58 +75,58 @@
             <div class="div2">
                 <div class="div2_div1">
                     <label for="name">Name</label><br>
-                     <Input type="text" id="name" placeholder="laptop"></Input>
+                     <Input type="text" id="name" title="Name" required></Input>
                 </div>
 
                 <div> 
                     <label for="title">Title</label><br>
-                    <Input type="text" id="title" placeholder="Dell XPS 15"></Input>
+                    <Input type="text" id="title" title="Title" required></Input>
                 </div>
             </div>
 
             <div class="div3">
                 <label for="description">Description</label><br>
-                <textarea name="" id="description"></textarea>
+                <textarea name="" id="description" title="Description" required></textarea>
             </div>
 
             <div class="div4">
                 <div>
                     <label for="vendor">Vendor</label><br>
-                    <Input type="text" id="vendor" placeholder="Dell"></Input>
+                    <Input type="text" id="vendor" title="Vendor" required></Input>
                 </div>
             
                 <div>
                     <label for="product_type">Product Type</label><br>
-                 <Input type="text" id="product_type" placeholder="Electronics"></Input>
+                 <Input type="text" id="product_type" title="Product Type" required></Input>
                 </div>
             </div>
 
             <div class="div5">
                 <label for="address">Address</label><br>
-                <Input type="text" id="address" placeholder="warehouse A"></Input>
+                <Input type="text" id="address" title="Address" required></Input>
             </div>
 
             <div class="div6">
                 
             
                 <div><label for="stock">In Stock</label><br>
-                    <Input type="number" id="stock" placeholder="50"></Input></div>
+                    <Input type="number" id="stock" title="Stock" required></Input></div>
 
                 <div>
                     <label for="buyPrice">Buying Price</label><br>
-                    <Input type="number" id="buyPrice" placeholder="1200"></Input>
+                    <Input type="number" id="buyPrice" title="Buying Price" required></Input>
                 </div>
             </div>
 
             <div class="div7">
                 <div>
                     <label for="salePrice">Sale Price</label><br>
-                    <Input type="number" id="salePrice" placeholder="1500"></Input>
+                    <Input type="number" id="salePrice" title="Sale Price" required></Input>
                 </div>
                 
 
                 <div><label for="quantity">Purchase Quantity</label><br>
-                    <Input type="number" id="quantity" placeholder="10"></Input>
+                    <Input type="number" id="quantity" title="Purchase Quantity" required></Input>
                 </div>
             </div>
 
@@ -133,17 +134,17 @@
 
                 <div>
                     <label for="prod_id">Product ID</label><br>
-                    <Input style="font-size: 16px; font-weight: bolder;" type="number" id="prod_id" placeholder="10" disabled></Input></div>
+                    <Input style="font-size: 16px; font-weight: bolder;" type="number" id="prod_id" title="Product ID" disabled></Input></div>
 
                 <div>
                     <label for="status">Status</label><br>
-                    <Input type="text" id="status" placeholder="Active"></Input>
+                    <Input type="text" id="status" title="Status" required></Input>
                 </div>
             </div>
 
             <div class="div9">
-                <input style="background-color: rgb(238, 40, 40);" type="button" value="Cancel" onclick="formClose()">
-                <input style="background-color: rgb(35, 206, 35);" type="submit" value="Save" >
+                <input style="background-color: rgb(238, 40, 40);" type="button" value="Cancel" onclick="formClose()" title="Close">
+                <input style="background-color: rgb(35, 206, 35);" type="submit" value="Save" title="Save" >
             </div>
 
 
@@ -173,58 +174,58 @@
                     <div class="div2">
                         <div class="div2_div1">
                             <label for="name1">Name</label><br>
-                                <Input type="text" id="name1" placeholder="laptop"></Input>
+                                <Input type="text" id="name1" title="Name" required></Input>
                         </div>
 
                         <div> 
                             <label for="title1">Title</label><br>
-                            <Input type="text" id="title1" placeholder="Dell XPS 15"></Input>
+                            <Input type="text" id="title1" title="Title" required></Input>
                         </div>
                     </div>
 
                     <div class="div3">
                         <label for="description1">Description</label><br>
-                        <textarea name="" id="description1"></textarea>
+                        <textarea name="" id="description1" title="Description" required></textarea>
                     </div>
 
                     <div class="div4">
                         <div>
                             <label for="vendor1">Vendor</label><br>
-                            <Input type="text" id="vendor1" placeholder="Dell"></Input>
+                            <Input type="text" id="vendor1" title="Vendor" required></Input>
                         </div>
                     
                         <div>
                             <label for="product_type1">Product Type</label><br>
-                            <Input type="text" id="product_type1" placeholder="Electronics"></Input>
+                            <Input type="text" id="product_type1" title="Product Type" required  ></Input>
                         </div>
                     </div>
 
                     <div class="div5">
                         <label for="address1">Address</label><br>
-                        <Input type="text" id="address1" placeholder="warehouse A"></Input>
+                        <Input type="text" id="address1" title="Address" required ></Input>
                     </div>
 
                     <div class="div6">
                         
                     
                         <div><label for="stock1">In Stock</label><br>
-                            <Input type="number" id="stock1" placeholder="50"></Input></div>
+                            <Input type="number" id="stock1" title="In stock" required></Input></div>
 
                         <div>
                             <label for="buyPrice1">Buying Price</label><br>
-                            <Input type="number" id="buyPrice1" placeholder="1200"></Input>
+                            <Input type="number" id="buyPrice1" title="Buying Price" required></Input>
                         </div>
                     </div>
 
                     <div class="div7">
                         <div>
                             <label for="salePrice1">Sale Price</label><br>
-                            <Input type="number" id="salePrice1" placeholder="1500"></Input>
+                            <Input type="number" id="salePrice1" title="Sale Price" required></Input>
                         </div>
                         
 
                         <div><label for="quantity1">Purchase Quantity</label><br>
-                            <Input type="number" id="quantity1" placeholder="10"></Input>
+                            <Input type="number" id="quantity1" title="Purchase Quantity" required></Input>
                         </div>
                     </div>
 
@@ -232,16 +233,16 @@
 
                         <div>
                             <label for="prod_id1">Product ID</label><br>
-                            <Input type="number" id="prod_id1" placeholder="10" disabled></Input></div>
+                            <Input type="number" id="prod_id1" title="Product ID" required disabled></Input></div>
 
                             <div>
                                 <label for="status1">Status</label><br>
-                                <Input type="text" id="status1" placeholder="Active"></Input>
+                                <Input type="text" id="status1" title="Status" required ></Input>
                             </div>
                     </div>
                     <div class="div9">
-                        <input style="background-color: rgb(238, 40, 40);" type="button" value="Cancel" onclick="formClose()">
-                        <input style="background-color: rgb(35, 206, 35);" type="button" value="Update" >
+                        <input style="background-color: rgb(238, 40, 40);" type="button" value="Cancel" onclick="formClose()" title="Close">
+                        <input style="background-color: rgb(35, 206, 35);" type="submit" value="Update" title="Update">
                     </div>
 
                 </form>
@@ -267,58 +268,58 @@
             <div class="div2">
                 <div class="div2_div1">
                     <label for="name2">Name</label><br>
-                     <Input type="text" id="name2" placeholder="laptop" disabled></Input>
+                     <Input type="text" id="name2" title="Name"disabled></Input>
                 </div>
 
                 <div> 
                     <label for="title2">Title</label><br>
-                    <Input type="text" id="title2" placeholder="Dell XPS 15" disabled></Input>
+                    <Input type="text" id="title2" title="Title" disabled></Input>
                 </div>
             </div>
 
             <div class="div3">
                 <label for="description">Description</label><br>
-                <textarea name="" id="description2" disabled></textarea>
+                <textarea name="" id="description2" title="Description" disabled></textarea>
             </div>
 
             <div class="div4">
                 <div>
                     <label for="vendor2">Vendor</label><br>
-                    <Input type="text" id="vendor2" placeholder="Dell" disabled></Input>
+                    <Input type="text" id="vendor2" title="Vendor" disabled></Input>
                 </div>
             
-                <div>
+                <div> 
                     <label for="product_type2">Product Type</label><br>
-                 <Input type="text" id="product_type2" placeholder="Electronics" disabled></Input>
+                 <Input type="text" id="product_type2" title="Product Type" disabled></Input>
                 </div>
             </div>
 
             <div class="div5">
                 <label for="address2">Address</label><br>
-                <Input type="text" id="address2" placeholder="warehouse A" disabled></Input>
+                <Input type="text" id="address2" title="Address" disabled></Input>
             </div>
 
             <div class="div6">
                 
             
                 <div><label for="stock2">In Stock</label><br>
-                    <Input type="number" id="stock2" placeholder="50" disabled></Input></div>
+                    <Input type="number" id="stock2" title="In Stock" disabled></Input></div>
 
                 <div>
                     <label for="buyPrice2">Buying Price</label><br>
-                    <Input type="number" id="buyPrice2" placeholder="1200" disabled></Input>
+                    <Input type="number" id="buyPrice2" title="Buying Price" disabled></Input>
                 </div>
             </div>
 
             <div class="div7">
                 <div>
                     <label for="salePrice">Sale Price</label><br>
-                    <Input type="number" id="salePrice2" placeholder="1500" disabled></Input>
+                    <Input type="number" id="salePrice2" title="Sale Price" disabled></Input>
                 </div>
                 
 
                 <div><label for="quantity2">Purchase Quantity</label><br>
-                    <Input type="number" id="quantity2" placeholder="10" disabled></Input>
+                    <Input type="number" id="quantity2" title="Purchase Quantity" disabled></Input>
                 </div>
             </div>
 
@@ -326,11 +327,11 @@
 
                 <div>
                     <label for="prod_id2">Product ID</label><br>
-                    <Input type="number" id="prod_id2" placeholder="10" disabled></Input></div>
+                    <Input type="number" id="prod_id2" title="Product ID" disabled></Input></div>
 
                     <div>
                         <label for="status2">Status</label><br>
-                        <Input type="text" id="status2" placeholder="Active"></Input>
+                        <Input type="text" id="status2" title="Status" disabled></Input>
                     </div>
             </div>
             <div class="div9" style="margin-left: 20%;">
@@ -362,19 +363,9 @@
         <!--Masking window-->
 
         <div id="mask_window">
-
-
         </div>
 
-        
-
-
     </div>
-
-
-    
-    
-   
      
     <script  src="/javascript/new.js"></script>  
     
