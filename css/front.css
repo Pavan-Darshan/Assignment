@@ -1,47 +1,104 @@
 
-#all_main {
-   width: 97%;
-   height: 100%;
-    display:inline-flex;
-    position: relative;
+#body_page2,#body_page1 {
+    display:flex;
+    padding: 0%;
+    margin: 0%;
+    overflow: hidden !important;
     
 }
 #main{
    
-    width: 100%;
-    height: 94%;
-    display: grid;
-    grid-template-rows: 5% 15% 40% 40%;
-    position:relative;
+    width: 98%;
+    position: relative;
     border: 1px solid rgb(17, 16, 16);
     box-shadow: 0px 0px 20px rgb(71, 70, 70);
-    padding: 1%;
-    left: 1.5%;
+    left: 0%;
+    top: 0%;
     border-radius: 1.5%;
-    background-color: white;
+    margin-left: 1%;
+    background-color: rgb(255, 255, 255);
    
   
 }
 
+/* Menu button*/
+#menu_button div {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(106, 103, 103);
+    margin: 6px 0;
+  }
+ 
+
+#menu_button{
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    position: absolute;
+    top: 20%;
+    left: 0%;
+    margin-left: 1%;
+  }
+#menu{
+    position: relative;
+    left: 0%;
+    top: 0%;  
+    height: 8%;
+    width: 100%;
+   
+  
+}
+#menu1{
+    position: absolute;
+    left: 0%;
+    top: 0%;  
+    width: 100%;
+    height: 8%;
+}
+.heading{
+    position: relative;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 10%;
+    font-size: 28px;
+    font-weight: bold;
+    
+}
+.heading>p{
+    position: absolute;
+    top: 0;
+    left: 1%;
+}
+
+.active_productPage {
+
+    background-color: #f6faf6;
+    
+    color: black;
+    
+    }
+
 .main_contents{
     position: relative;
-    left: 1%;
-    width: 95%;
-    height: 60%;
+    left:0%;
+    top: 0%;
+    padding-top: 1%;
+    width: 100%;
+    height: 40%;
     display: grid;
-    grid-template-columns: 19% 19% 19% 19% 19%;
-    column-gap: 2%;
-    
-    
+    grid-template-columns: 20% 20% 20% 20% 20%;
 }
 .main_contents div
 {
-    width: 90%;
-    height: 100%;
+    width: 75%;
+    height: 75%;
     border-radius: 10px;
     box-shadow: 10px 10px 5px rgb(219, 216, 216);
     background-color: rgb(226, 233, 233);
     position: relative;
+    top: 0;
+    left: 12.5%;
 
 }
 .main_contents p{
@@ -67,53 +124,23 @@
    height: 30%;
   background-size: cover;
    left: 10%;
-}
-/* Menu button*/
-#menu_button div {
-    width: 25px;
-    height: 3px;
-    background-color: rgb(106, 103, 103);
-    margin: 6px 0;
-
-  }
- 
-
-#menu_button{
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    
-  }
-#menu{
-    position: relative;
-    left: 1%;
-    top: 1%;  
-}
-#menu1{
-    position: relative;
-    left: 1%;
-    top: 1.5%;  
-}
-.heading{
-    position: relative;
-    left: 1%;
-    width: 95%;
-    height: 60%;
-    font-size: 28px;
-    font-weight: bold;
+   
 }
 
 
 /* side bar*/
 
-#sideBar{
+.sideBar{
     width: 15%;
-    height: 98%;
+    position: relative;
+    top: 0;
+    left: 0;
     display: none;
     background-color: #222e3c;
     color: white;
+    border-radius:15px;
 }
-#sideBar p{
+.sideBar p{
     
     font-size: 22px;
     text-align: center;
@@ -124,6 +151,7 @@
     text-decoration: none;
     margin-left: 20px;
     color: white;
+    font-size: 100%;
     
    
     
@@ -131,8 +159,13 @@
 .link_tag{
     padding: 10px 0px 10px 0px;
     font-size: 16px;
+}
+#active_productPage{
+    background-color: rgb(199, 198, 203);
     
-  
+}
+#active_productPage a{
+    color: red;
 }
 .sideBar_close{
     width: 30%;
@@ -160,39 +193,58 @@
 
 
 #main_Product{
-    width: 100%;
-    height: 94%;
+    width: 96%;
     display: block;
     opacity: 1;
     position: relative;
-    left: 1.5%;
+    left:0%;
+    top: 0%;
     border: 1px solid rgb(17, 16, 16);
     box-shadow: 0px 0px 20px rgb(71, 70, 70);
     padding: 1%;
     border-radius: 1.5%;
-    
+    margin-left: 1%;
+   
 }
 
 #add_product{
     width: 100%;
-    position: relative;
+    height: 12%;
+    position: absolute;
+    top: 8%;
+    left: 0%;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns:50% 50%;
+   
 }
 #head_name{
-    margin-left: 1.5%;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    margin-left: 2%;
+}
+#add_button{
+    position: relative;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
 
 }
+
 #add{
     position: absolute;
-    right: 2%;
-    top: 5%;
-    width: 15%;
-    height: 50%;
+    right: 3%;
+    top: 30%;
+    width: 30%;
+    height: 40%;
     border-radius: 10px;
     border: none;
     outline: none;
-    background-color: black;
+    background-color:black;
     color: white;
     font-size: 80%;
 }
@@ -200,10 +252,13 @@
 /* serach */
 #search_all{
     width: 100%;
-    height: 8%;
+    height: 10%;
     display: grid;
     grid-template-columns: 50% 50%;
-    position: relative;
+    position: absolute;
+    top: 20%;
+    left: 0%;
+    /* background-color: aqua; */
     
 
 }
@@ -214,51 +269,64 @@
     top: 0;
     left: 0;
     display: inline-flex;
-   
 }
-#search input{
+#search>input{
+    position: relative;
+    top: 30%;
+    left: 0;
     width: 65%;
-    height: 60%;
+    height: 40%;
     background-color: rgb(237, 240, 242);
     border-radius: 8px 0 0 8px;
-    border: none;
-    margin-left: 1.5%;
-   
+    border: 1px solid black;
+    border-right: none;
+    margin-left:2%;
 }
+
 #search_submit{
+    position: relative;
+    top: 30%;
+    left: 0;
     width: 10%;
-    height: 60%;
+    height: 40%;
     background-color: rgb(164, 167, 169);
     border-radius: 0 10px 10px 0px;
-    border: none;
-  
+    border: 1px solid black;
+    border-left: none;
 }
+
 #search_submit i{
     width: 60%;
     height: 60%;
-    
-}
-#selectButton{
-position: relative;
-display: inline-block;
 }
 
+#selectButton{
+position: relative;
+top: 0%;
+left: 0%;
+width: 100%;
+height: 100%;
+display: inline-block;
+
+}
 
 
 #selectButton select{
     position: absolute;
-    top: 0%;
-    left: 66%;
+    top: 30%;
+    right: 3%;
     width: 30%;
-    height: 60%;
+    height: 40%;
     border-radius: 10px;
     font-size: 90%;
     border: 1px solid black;
     outline: none;
-    
 }
+
 #selectButton option{
     text-align: center;
+    
+   
 }
 textarea{
     overflow: hidden;
@@ -270,29 +338,29 @@ textarea{
 /*Table */
 #table_area{
     position: relative;
+    left: 0%;
+    top:30% ;
     width: 100%;
-    height: 70%;
-    overflow: auto;
+    height: auto;
+    overflow-x: auto;
+    display: block;
+    
 }
 .table_main{
-    width: 98%;
+    width: 99.5%;
     position: relative;
-    left: 1%;
-    top: 2%;
-    margin-top: 2%;
-    border: 1px solid black;
+    left: 0%;
+    top: 0%;
+    margin-top: 0%;
+    margin-left: 0%;
     border-collapse: collapse;
-    border-radius: 10px;
-    table-layout: fixed;
-    /* overflow: auto; */
+    border-radius: 100px;
+    /* table-layout: fixed; */
     
+   
 }
 
 .table_main th{
-    /* border-bottom: 1px solid whitesmoke;
-    box-shadow: 6px 6px 10px rgb(230, 229, 229); */
-    
-    /* padding:5px; */
     height: 100%;
     border: 1px solid black;
     background-color: rgb(83, 81, 81);
@@ -310,15 +378,14 @@ textarea{
     font-size: 16px;
     padding-top: 0.5%;
     padding-bottom: 0.5%;
-    white-space: nowrap;
+    /* white-space: nowrap;
     overflow: hidden;
-    text-overflow:ellipsis;
-    max-width: 50px; 
+    text-overflow:ellipsis; 
+    max-width: 50px;  */
     
    
     
 } 
-
 
 .table_main i{
     color: blue;
@@ -340,14 +407,9 @@ textarea{
     border:1px solid black;
 }
 
-#all_main{
-    /* background-color: rgb(241, 233, 248); */
-    
-}
-
 
 /* form */
-#form_page,#form_page_edit,#form_page_view{
+.form_page,.form_page_edit,.form_page_view{
     
     width: 40%;
     height: 90%;
@@ -358,10 +420,13 @@ textarea{
     border-radius: 4%;
     position: absolute;
     top: 10px;
-    right: -700px;
+    left: -700px;
     display: none;
     z-index: 9999;
     
+}
+#required{
+    color: red;
 }
 .div1{
     position: relative;
@@ -398,7 +463,7 @@ textarea{
 .div2,.div4,.div6,.div7,.div8{
     width: 100%-20px;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
 }
 .div2 input{
     width: 90%;
@@ -421,6 +486,15 @@ textarea{
     box-shadow: 5px 5px 2px rgb(240, 224, 224);
 }
 .div4 input{
+    width: 90%;
+    height: 50%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    box-shadow: 5px 5px 2px rgb(240, 224, 224);
+}
+.div4>div>select{
     width: 90%;
     height: 50%;
     border-radius: 10px;
@@ -481,7 +555,7 @@ textarea{
 }
 
 /* delete window */
-#delete_window_main{
+.delete_window_main{
     width: 30%;
     height: 20%;
    background-color: none;
@@ -490,6 +564,7 @@ textarea{
     left: 35%;
     display:none;
     border-radius: 20px;
+    background-color: red;
    
 }
 
@@ -501,7 +576,7 @@ textarea{
     position: absolute;
     border:none;
     display: grid;
-    grid-template-columns: 65% 35%;
+    grid-template-columns: 60% 40%;
     border-radius: 20px;
     z-index: 1;
 
@@ -517,23 +592,29 @@ textarea{
 }
 #delete_window div:first-child{
     background-color: white;
+    height: 92%;
+    width: 100%;
 }
 
 
 #delete_window div:last-child{
     background-color:white;
     position: relative;
+    left: 0;
+    height: 92%;
+    width: 100%;
 }
 #delete_window div:last-child button:first-child{
     background-color: black;
     color: white;
     position: absolute;
     top: 55%;
-    left: 10%;
-    width: 35%;
+    left: 0%;
+    width: 45%;
     height: 20%;
     border: none;
     border-radius: 5px;
+    
     
 }
 #delete_window div:last-child button:last-child{
@@ -542,47 +623,26 @@ textarea{
     border-radius: 1%;
     position: absolute;
     top: 55%;
-    right: 10%;
-    width: 35%;
+    right: 0%;
+    width: 45%;
     height: 20%;
     border: none;
     border-radius: 5px;
+ 
 }
 
 /* masking window */
 
-#mask_window{
+.mask_window{
     width: 100%;
     height: 100%;
     position: absolute;
     background-color:black;
     display: none;
-    opacity: 0.3;
+    opacity: 0.6;
 }
 
- @media screen and (max-width :920px) {
-
-    .main_contents>div>p:nth-child(odd)>i{
-    color: hsl(248, 98%, 51%);
-    position: relative;
-   width: 15%;
-   height: 15%;
-  background-size: cover;
-   left: 10%;
- }
-.main_contents p{
-    font-size: 100%;
-    position: relative;
-    left: 10%;
- }
-
- .table_main i{
-    color: blue;
-    font-size: 10px;
-    
-}
-} 
-
+/* tooltip description */
 #tooltip{
     white-space:break-all;
     overflow: hidden;
@@ -601,47 +661,49 @@ textarea{
 
 
 
-footer {
-    background-color: #333;
-    padding: 20px;
-    text-align: center;
-    color: white;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 15%;
-    
-    
-}
 .social-links {
     width: 100%;
-    height: 10%;
+    height: 20%;
     background-color: #222e3c;
     position: relative;
-    top: 61%;
-    padding-top: 10%;
+    top: 52%;
+    border-radius: 15px;
+    display: flex;
+    
 }
 
-.social-links a {
-    margin-top: 20%;
-  margin-left: 10%;
+.social-links>a {
+    margin-top: 50%;
+    margin-left: 12%;
     text-decoration: none;
     color: white;
     font-size: 15px;
+    
+   
 }
 .social-links a:hover {
     color: #ddd;
+}
+.social-links>a>img{
+    width: 50%;
+    height: 80%;
 }
 
 /* video tag */
 
 #video_block{
-    width: 100%;
-    height: 100%;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    width: 99%;
+    height: 40%;
     border: none;
 }
 
 #video_block>video{
+    position: relative;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     border:none;

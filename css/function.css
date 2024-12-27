@@ -1,0 +1,19 @@
+.form_page.addProductActive,.form_page_edit.editProductActive,.form_page_view.viewProductActive{
+    display: block;
+    left: 30%;
+    z-index: 9999;
+}
+
+.mask_window.windowActive{
+    display: block;
+    z-index: 10;
+}
+.sideBar.active{
+    display: block;
+}
+.delete_window_main.active{
+    display: block;
+    z-index: 9999;
+}
+
+
