@@ -15,5 +15,8 @@
     display: block;
     z-index: 9999;
 }
-
+.dialouge.dialougeActive{
+    display: block;
+    z-index: 9999;
+}
 

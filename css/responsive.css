@@ -176,6 +176,12 @@
     font-size: 20px;
     padding: 10px; 
 } 
+.table_main td:nth-child(4){
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis; 
+    max-width: 10px; 
+}
 
 .table_main i{
     color: blue;
@@ -218,6 +224,18 @@
     z-index: 9999;
     
 }
+.div1 button{
+    float: right;
+    margin-top: -8.5%;
+    margin-right: 4%;
+    height: 40%;
+    width: 7%;
+    border: none;
+    box-shadow: 4px 4px 2px rgb(236, 174, 174);
+    cursor: pointer;
+    border-radius: 5px;
+    
+}
 .delete_window_main{
     width: 60%;
     height: 20%;
@@ -248,8 +266,9 @@
 }
 
 /* mobile screen ----------------------------------------*/
-@media screen and (max-width :320px) 
-{
+@media screen and (max-width :426px) 
+{   
+    
     .main_contents{
         width: 100%;
         height: auto;
@@ -289,6 +308,20 @@
         
      
     }
+    .div1 button{
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-top: -15.5%;
+        margin-right: 5%;
+        height: 40%;
+        width: 7%;
+        border: none;
+        box-shadow: 4px 4px 2px rgb(236, 174, 174);
+        cursor: pointer;
+        border-radius: 5px;
+        
+    }
 
     .main_contents>div>p:nth-child(even){
         font-size: 125%;
@@ -305,9 +338,10 @@
       background-size: cover;
        left: 50%;
        top: 0%;
-       margin-top: 2%;
-       
+       margin-top: 2%;   
     }
+
+
     #video_block{
        display: block;
         width: 100%;
@@ -467,8 +501,6 @@
         height: auto;
         overflow: auto;
         display: block;
-        
-        
     }
 
     .table_main{
@@ -486,16 +518,13 @@
     
 
 .table_main th{
-    
     padding:10px;
     height: 100%;
     border: 1px solid black;
     background-color: rgb(83, 81, 81);
     color: white;
     font-size:22px;
-    text-align: center;
-    
-    
+    text-align: center;    
 }
 .table_main td{
     height: 12%;
@@ -505,6 +534,12 @@
     padding: 10px;
    
 } 
+.table_main td:nth-child(4){
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis; 
+    max-width: 10px; 
+}
 .table_main i{
     color: blue;
     font-size: 18px;
@@ -528,7 +563,6 @@
     position: relative;
     top: 66%;
     border-radius: 15px;   
-   
    display: block;
 }
 
@@ -590,11 +624,14 @@
     border-radius: 20px;
    
 }
+
+
+
 #delete_window{
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 80%;
     background-color: white;
-    padding: 2%;
+    padding: 5%;
     position: absolute;
     top: 0;
     left: 0;
@@ -602,56 +639,80 @@
     display: block;
     border-radius: 20px;
     z-index: 1;
-
+    margin-left: 2.5%;
 }
-
-#delete_window div:first-child{
-    background-color:white;
-    height: auto;
-    width: 100%;
+#delete_window>p:first-child{
+    color: red;
+    font-size: 26px;
+    margin-top: 0%;
 }
-
-
-#delete_window div:last-child{
-    background-color:white;
-    position: absolute;
-    left: 0;
-    height: auto;
-    width: 100%;
+#delete_window>p:nth-child(2){
+    font-size: 18px;
+    margin-top: -4%;
 }
-
-#delete_window div:last-child button:first-child{
+#cancelDelete{
     background-color: black;
     color: white;
-  
-    width: 35%;
-    height: auto;
+    width: 25%;
+    height: 25%;
+    margin-left: 15%;
+    margin-top: 6%;
     border: none;
     border-radius: 10px;
-    padding-top: 6%;
-    padding-bottom: 6%;
-    margin-left: 25px;
-    
 }
-#delete_window div:last-child button:last-child{
+#confirmDelete{
     background-color:red;
     color: white;
-    border-radius: 2%;
-    justify-content: center;
-    width: 35%;
-    height: auto;
+    width: 25%;
+    height: 25%;
+    margin-left: 15%;
     border: none;
     border-radius: 10px;
-    padding-top: 6%;
-    padding-bottom: 6%;
-    margin-right: 25px;
 }
-#delete_window p:last-child{
-    font-size: 20px;
-    color: black;
+}
+@media screen and (max-width :1440px) 
+{   .div1 button{
+    float: right;
+    margin-top: -9.5%;
+    margin-right: 4%;
+    height: 40%;
+    width: 7%;
+    border: none;
+    box-shadow: 4px 4px 2px rgb(236, 174, 174);
+    cursor: pointer;
+    border-radius: 5px;
+    
 }
 
-
+}
+@media screen and (max-width :1024px) 
+{   .div1 button{
+    float: right;
+    margin-top: -13.5%;
+    margin-right: 4%;
+    height: 40%;
+    width: 7%;
+    border: none;
+    box-shadow: 4px 4px 2px rgb(236, 174, 174);
+    cursor: pointer;
+    border-radius: 5px;
+    
+}
 
 }
+/* @media screen and (max-width :2560px) 
+{   .div1 button{
+    float: right;
+    margin-top: -5.5%;
+    margin-right: 4%;
+    height: 40%;
+    width: 7%;
+    border: none;
+    box-shadow: 4px 4px 2px rgb(236, 174, 174);
+    cursor: pointer;
+    border-radius: 5px;
+    
+}
+
+} */
 

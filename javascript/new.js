@@ -19,10 +19,9 @@ function closeSideBar() {
   document.getElementById("menu_button").removeEventListener("click", closeSideBar);
   document.getElementById("menu_button").addEventListener("click", openSideBar);
 }
-
 function addProduct() {
   // Id generator
-  const idValue = idGenerator();
+  idValue=idGenerator();
   document.getElementById("form_page").classList.add("addProductActive");
   document.getElementById("prod_id").value = idValue;
   document.getElementById("mask_window").classList.add("windowActive");
@@ -40,11 +39,22 @@ function viewProduct() {
 }
 
 function formClose() {
+ 
+  document.getElementById("formId").reset();
   document.getElementById("form_page").classList.remove("addProductActive");
   document.getElementById("form_page_edit").classList.remove("editProductActive");
   document.getElementById("form_page_view").classList.remove("viewProductActive");
   document.getElementById("mask_window").classList.remove("windowActive");
 
+}
+
+function dialougeBoxDelete(){
+  document.getElementById("dialouge").classList.add("dialougeActive"); 
+  document.getElementById("mask_window").classList.add("windowActive");
+}
+function dialougeBoxClose(){
+  document.getElementById("dialouge").classList.remove("dialougeActive"); 
+  document.getElementById("mask_window").classList.remove("windowActive");
 }
 
 // Array from local storage
@@ -163,34 +173,35 @@ loadData(); // load data into table
 
 function idGenerator() {
   const arrayLength = array.length;
+  productIdArray.sort((x, y) => { return y - x;});
 
   if (arrayLength <= 0) {
     return 1001;
-  } else {
+  } 
+  else 
+  {
     
     for (let i = 1; i < array.length; i++) 
     {
       if (!(array[i - 1].prod_id == array[i].prod_id - 1)) {
 
         if (productIdArray.length <= 0) 
-          return arrayLength + 1001;
+          return (arrayLength + 1001);
         
-        else {
-          productIdArray.sort((x, y) => {
-            return y - x;
-          });
+        else 
+        {
           return productIdArray.pop();
         }
       }
     }
   }
 
-  return array[arrayLength - 1].prod_id + 1;
+  return array[arrayLength-1].prod_id + 1;
 }
 
 // Store Operation in Local storage------------------------------------------------->
 
-function storeData(x) {
+function storeData() {
   let keyName = localStorage.key("table_data");
 
   if (keyName) {
@@ -219,6 +230,8 @@ function readFormData() {
   formData["prod_id"] = idValue;
   formData["status"] = document.getElementById("status").value;
 
+ 
+
   array.push(formData); // adding new array item
   loadData(); // loading the table
 }
@@ -231,7 +244,7 @@ function loadData() {
                     <th>Description</th>
                     <th>Price</th>
                     <th>Status</th>
-                    <th>Vendoe Name</th>
+                    <th>Vendor Name</th>
                     <th>Product Type</th>
                     <th>Address</th>
                     <th>Actions</th>
@@ -245,7 +258,8 @@ function loadData() {
       element.name +
       `</td><td>` +
       element.title +
-      `</td><td>` +
+      `</td><td  id="tooltip" title="`+
+        element.description +`">` +
       element.description +
       `</td><td>` +
       element.salePrice +
@@ -258,12 +272,12 @@ function loadData() {
       `</td><td>` +
       element.address +
       `</td><td>` +
-      `<button onclick="onEdit(this)"><i class="fa fa-edit"></i></button>
-                        <button onclick="onView(this)"> <i class="fa fa-eye"></i></button>
-                        <button onclick="onDelete(this)"><i class="fa fa-trash"></i></button></td></tr>`;
+      `<button id="view" onclick="onEdit(`+element.prod_id +`,this)"><i class="fa fa-edit"></i></button>
+                        <button onclick="onView(`+element.prod_id +`)"> <i class="fa fa-eye"></i></button>
+                        <button onclick="onDelete(`+element.prod_id +`)"><i class="fa fa-trash"></i></button></td></tr>`;
   });
   html += `</tbody>`;
- 
+
   
 
   //   store the data into local storage
@@ -279,12 +293,9 @@ function loadData() {
 //   VIEW OPERATION---------------------------------------->
 
 function onView(rowData) {
-  selectedRow = rowData.parentElement.parentElement;
-
-  rowId = selectedRow.cells[0].innerHTML;
 
   array.forEach((index) => {
-    if (rowId == index.prod_id) {
+    if (rowData == index.prod_id) {
       document.getElementById("name2").value = index.name;
       document.getElementById("title2").value = index.title;
       document.getElementById("description2").value = index.description;
@@ -304,15 +315,15 @@ function onView(rowData) {
 
 // EDIT OPERATION--------------------->
 
-function onEdit(rowData) {
-  selectedRow = rowData.parentElement.parentElement;
-
-  rowId = selectedRow.cells[0].innerHTML;
+function onEdit(rowData,row) {
+  console.log(row.parentElement.innerHTML);
+  
+          
   let x = 1;
   array.forEach((index) => {
-    if (rowId == index.prod_id) {
+    if (rowData == index.prod_id) {
       if (index.status.toLocaleLowerCase() == "delivered") {
-        alert("Product was Delivered, only can view the details...");
+        dialougeBoxDelete();
         return (x = 0);
       }
 
@@ -381,13 +392,10 @@ function onDelete(data) {
 }
 
 function deleteRecord(data) {
-  selectedRow = data.parentElement.parentElement;
-
-  rowId = selectedRow.cells[0].innerHTML;
-
+ 
   array.forEach((index) => {
-    if (rowId == index.prod_id) {
-      // ID DELETED ARRAY
+    if (data == index.prod_id) {
+      // push DELETED ID to ARRAY
       productIdArray.push(index.prod_id);
       productIdArray.sort((x, y) => {
         return y - x;
@@ -438,7 +446,8 @@ const filterOptions = () => {
       element.name +
       `</td><td>` +
       element.title +
-      `</td><td>` +
+      `</td><td id="tooltip" title="`+
+        element.description +`">` +
       element.description +
       `</td><td>` +
       element.salePrice +
@@ -451,9 +460,9 @@ const filterOptions = () => {
       `</td><td>` +
       element.address +
       `</td><td>` +
-      `<button onclick="onEdit(this)"><i class="fa fa-edit"></i></button>
-                      <button onclick="onView(this)"> <i class="fa fa-eye"></i></button>
-                     <button onclick="onDelete(this)"><i class="fa fa-trash"></i></button></td></tr>`;
+      `<button onclick="onEdit(`+element.prod_id +`)"><i class="fa fa-edit"></i></button>
+                      <button onclick="onView(`+element.prod_id +`)"> <i class="fa fa-eye"></i></button>
+                     <button onclick="onDelete(`+element.prod_id +`)"><i class="fa fa-trash"></i></button></td></tr>`;
   });
   html += `</tbody>`;
   document.getElementById("table_data").innerHTML = html;
@@ -466,7 +475,14 @@ try {
 
 function serach() {
   let val = document.getElementById("seachItem").value;
+  if(val==""){
+    loadData();
+    return 0;
+  }
 
+  else{
+
+  
   let x = 0;
   array.forEach((index) => {
     if (index.prod_id == val) {
@@ -488,7 +504,8 @@ function serach() {
         index.name +
         `</td><td>` +
         index.title +
-        `</td><td>` +
+        `</td><td id="tooltip" title="`+
+        index.description +`">` +
         index.description +
         `</td><td>` +
         index.salePrice +
@@ -501,16 +518,32 @@ function serach() {
         `</td><td>` +
         index.address +
         `</td><td>` +
-        `<button onclick="onEdit(this)"><i class="fa fa-edit"></i></button>
-                 <button onclick="onView(this)"> <i class="fa fa-eye"></i></button>
-                 <button onclick="onDelete(this)"><i class="fa fa-trash"></i></button></td></tr></tbody>`;
+        `<button onclick="onEdit(`+element.prod_id +`)"><i class="fa fa-edit"></i></button>
+                 <button onclick="onView(`+element.prod_id +`)"> <i class="fa fa-eye"></i></button>
+                 <button onclick="onDelete(`+element.prod_id +`)"><i class="fa fa-trash"></i></button></td></tr></tbody>`;
       // loading on table
       document.getElementById("table_data").innerHTML = html;
       return (x = 1);
     }
   });
 
-  if (x == 0) alert("Product ID Not Found......!");
+  if (x == 0)
+   {
+    var html =`<thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Vendoe Name</th>
+                    <th>Product Type</th>
+                    <th>Address</th>
+                    <th>Actions</th></thead>
+                 <tbody><tr><td colspan="10">No   Data   Found</td></tr></tbody>`
+    document.getElementById("table_data").innerHTML = html;
+   }
+ }
 }
 
 // serach by Enter key---------------------------------------->
@@ -565,11 +598,18 @@ countRefresh();
 
 // clear serach bar
 
-document.getElementById("add").addEventListener("click",()=>{
-  document.getElementById("seachItem").value="";
+try{
+  document.getElementById("add").addEventListener("click",()=>{
+    document.getElementById("seachItem").value="";
+    
+  });
+  document.getElementById("filter").addEventListener("click",()=>{
+    document.getElementById("seachItem").value="";
+    
+  });
   
-});
-document.getElementById("filter").addEventListener("click",()=>{
-  document.getElementById("seachItem").value="";
-  
-});
+}
+catch(e){
+
+}
+
